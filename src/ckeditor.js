@@ -73,6 +73,8 @@ import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
 import EditorWatchdog from '@ckeditor/ckeditor5-watchdog/src/editorwatchdog.js';
 import { StrapiUploadAdapter } from '@gtomato/ckeditor5-strapi-upload-plugin';
+import { StrapiMediaLib } from './strapi-medialib-plugin';
+import FullScreen from './fullscreen-plugin';
 
 class Editor extends ClassicEditor {}
 
@@ -93,6 +95,7 @@ Editor.builtinPlugins = [
 	DataSchema,
 	Essentials,
 	FindAndReplace,
+	FullScreen,
 	FontBackgroundColor,
 	FontColor,
 	FontFamily,
@@ -133,6 +136,7 @@ Editor.builtinPlugins = [
 	SpecialCharactersText,
 	StandardEditingMode,
 	StrapiUploadAdapter,
+	StrapiMediaLib,
 	Strikethrough,
 	Subscript,
 	Superscript,
