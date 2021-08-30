@@ -72,6 +72,7 @@ import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
 import EditorWatchdog from '@ckeditor/ckeditor5-watchdog/src/editorwatchdog.js';
+import { StrapiUploadAdapter } from '@gtomato/ckeditor5-strapi-upload-plugin';
 
 class Editor extends ClassicEditor {}
 
@@ -131,6 +132,7 @@ Editor.builtinPlugins = [
 	SpecialCharactersMathematical,
 	SpecialCharactersText,
 	StandardEditingMode,
+	StrapiUploadAdapter,
 	Strikethrough,
 	Subscript,
 	Superscript,
@@ -144,7 +146,7 @@ Editor.builtinPlugins = [
 	Title,
 	TodoList,
 	Underline,
-	WordCount
+	WordCount,
 ];
 
 export default { Editor, EditorWatchdog };
