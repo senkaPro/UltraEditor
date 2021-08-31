@@ -156,45 +156,81 @@ Editor.builtinPlugins = [
 Editor.defaultConfig = {
 	toolbar: {
 		items: [
+			'ckfinder',
+			'findAndReplace',
+			'textPartLanguage',
 			'heading',
 			'|',
 			'fontFamily',
 			'fontSize',
 			'fontColor',
+			'fontBackgroundColor',
 			'|',
 			'bold',
 			'italic',
 			'underline',
 			'strikethrough',
+			'highlight',
+			'specialCharacters',
+			'|',
+			'blockQuote',
+			'link',
+			'horizontalLine',
+			'pageBreak',
 			'subscript',
 			'superscript',
-			'removeFormat',
-			'code',
-			'link',
+			'|',
+			'restrictedEditingException',
 			'bulletedList',
 			'numberedList',
 			'todoList',
-			'insertImage',
-			'strapiMediaLib',
 			'|',
+			'removeFormat',
 			'alignment',
 			'indent',
 			'outdent',
 			'|',
-			'specialCharacters',
-			'blockQuote',
+			'code',
+			'codeBlock',
+			'htmlEmbed',
+			'sourceEditing',
+			'|',
+			'imageResize',
 			'insertTable',
 			'mediaEmbed',
-			'htmlEmbed',
-			'codeBlock',
-			'sourceEditing',
-			'horizontalLine',
+			'insertImage',
+			'strapiMediaLib',
+			'mediaEmbed',
+			'|',
+			'wordCount',
 			'|',
 			'fullScreen',
 			'undo',
 			'redo',
 		],
 		shouldNotGroupWhenFull: true,
+	},
+	language: 'all',
+	additionalLanguages: 'all',
+	strapiUpload: {
+		uploadUrl: '',
+		headers: '',
+	},
+	table: {
+		contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells'],
+	},
+	fontFamily: {
+		options: [
+			'default',
+			'Arial, Helvetica, sans-serif',
+			'Courier New, Courier, monospace',
+			'Georgia, serif',
+			'Lucida Sans Unicode, Lucida Grande, sans-serif',
+			'Tahoma, Geneva, sans-serif',
+			'Times New Roman, Times, serif',
+			'Trebuchet MS, Helvetica, sans-serif',
+			'Verdana, Geneva, sans-serif',
+		],
 	},
 	image: {
 		styles: ['alignLeft', 'alignCenter', 'alignRight'],
@@ -203,6 +239,11 @@ Editor.defaultConfig = {
 				name: 'resizeImage:original',
 				value: null,
 				icon: 'original',
+			},
+			{
+				name: 'resizeImage:30',
+				value: '30',
+				icon: 'small',
 			},
 			{
 				name: 'resizeImage:50',
@@ -216,18 +257,26 @@ Editor.defaultConfig = {
 			},
 		],
 		toolbar: [
+			'imageStyle:block',
+			'imageStyle:side',
+			'|',
+			'toggleImageCaption',
+			'imageTextAlternative',
+			'|',
+			'linkImage',
 			'imageStyle:alignLeft',
 			'imageStyle:alignCenter',
 			'imageStyle:alignRight',
 			'|',
-			'imageTextAlternative',
-			'|',
+			'resizeImage:30',
 			'resizeImage:50',
 			'resizeImage:75',
 			'resizeImage:original',
-			'|',
-			'linkImage',
 		],
+	},
+	link: {
+		// Automatically add target="_blank" and rel="noopener noreferrer" to all external links.
+		addTargetToExternalLinks: true,
 	},
 	table: {
 		contentToolbar: [
@@ -240,11 +289,7 @@ Editor.defaultConfig = {
 	},
 	heading: {
 		options: [
-			{
-				model: 'paragraph',
-				title: 'Paragraph',
-				class: 'ck-heading_paragraph',
-			},
+			{ model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
 			{
 				model: 'heading1',
 				view: 'h1',
@@ -273,51 +318,6 @@ Editor.defaultConfig = {
 	},
 	htmlEmbed: {
 		showPreviews: true,
-		sanitizeHtml: inputHtml => {
-			const outputHtml = sanitizeHtml(inputHtml);
-			return {
-				html: outputHtml,
-				hasChanged: true,
-			};
-		},
 	},
-	fontFamily: {
-		options: [
-			'default',
-			'Arial, Helvetica, sans-serif',
-			'Courier New, Courier, monospace',
-			'Georgia, serif',
-			'Lucida Sans Unicode, Lucida Grande, sans-serif',
-			'Tahoma, Geneva, sans-serif',
-			'Times New Roman, Times, serif',
-			'Trebuchet MS, Helvetica, sans-serif',
-			'Verdana, Geneva, sans-serif',
-			'JetBrains Mono, monospace',
-			'Lato, Inter, sans-serif',
-		],
-	},
-	link: {
-		defaultProtocol: 'http://',
-		decorators: [
-			{
-				mode: 'manual',
-				label: 'Open in a new tab',
-				defaultValue: true,
-				attributes: {
-					target: '_blank',
-					rel: 'noopener noreferrer',
-				},
-			},
-			{
-				mode: 'manual',
-				label: 'Downloadable',
-				attributes: {
-					download: 'download',
-				},
-			},
-		],
-	},
-	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en',
 };
 export default { Editor, EditorWatchdog };
